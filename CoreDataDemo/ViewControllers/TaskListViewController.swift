@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 protocol TaskViewControllerDelegate {
     func reloadData()
@@ -26,7 +25,7 @@ class TaskListViewController: UITableViewController {
         storageManager.taskList = storageManager.fetchData()
     }
 
-//MARK: - NavigationBar
+//MARK: - Setup NavigationBar
     private func setupNavigationBar() {
         title = "Task List"
         navigationController?.navigationBar.prefersLargeTitles = true
