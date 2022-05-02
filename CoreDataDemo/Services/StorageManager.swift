@@ -73,8 +73,9 @@ class StorageManager {
     }
     
     func saveEdition(_ taskName: String, tableView: UITableView, index: Int) {
-        let editedTask = taskList[index]
-        editedTask.setValue(taskName, forKey: taskName)
+        taskList[index].title = taskName
+        let cellIndex = IndexPath(row: index, section: 0)
+        tableView.reloadRows(at: [cellIndex], with: .automatic)
         
         saveContext()
     }
