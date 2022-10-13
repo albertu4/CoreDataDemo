@@ -6,13 +6,11 @@
 //
 
 import CoreData
-import UIKit
 
 class StorageManager {
     
     static let shared = StorageManager()
-    
-    var taskList: [Task] = []
+    private init() {}
     
     // MARK: - Core Data stack
     var persistentContainer: NSPersistentContainer = {
@@ -24,10 +22,32 @@ class StorageManager {
         })
         return container
     }()
-    
-    private init() {}
-    
+
     // MARK: - Core Data Saving support
+    func fetchData(completion: @escaping([Task]) -> Void) {
+        let fetchRequest = Task.fetchRequest()
+        
+        do {
+            let task = try persistentContainer.viewContext.fetch(fetchRequest)
+            completion(task)
+        } catch let error {
+            print("Failed to fetch data", error)
+        }
+        return
+    }
+    
+    func deleteData(_ data: Task) {
+        persistentContainer.viewContext.delete(data)
+    }
+    
+    func save(completion: @escaping(Task) -> Void) {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Task", in: persistentContainer.viewContext) else { return }
+        
+        guard let task = NSManagedObject(entity: entityDescription, insertInto: persistentContainer.viewContext) as? Task else { return }
+        
+        completion(task)
+    }
+    
     func saveContext() {
         if persistentContainer.viewContext.hasChanges {
             do {
@@ -37,46 +57,5 @@ class StorageManager {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
-    }
-    
-    func fetchData() -> [Task] {
-        let fetchRequest = Task.fetchRequest()
-        
-        do {
-            taskList = try persistentContainer.viewContext.fetch(fetchRequest)
-        } catch let error {
-            print("Failed to fetch data", error)
-        }
-        return taskList
-    }
-    
-    func deleteData(at indexPath: IndexPath, tableView: UITableView) {
-        let task = taskList.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        persistentContainer.viewContext.delete(task)
-        
-        saveContext()
-    }
-    
-    func save(_ taskName: String, tableView: UITableView) {
-        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Task", in: persistentContainer.viewContext) else { return }
-        
-        guard let task = NSManagedObject(entity: entityDescription, insertInto: persistentContainer.viewContext) as? Task else { return }
-        
-        task.title = taskName
-        taskList.append(task)
-        
-        let cellIndex = IndexPath(row: taskList.count - 1, section: 0)
-        tableView.insertRows(at: [cellIndex], with: .automatic)
-        
-        saveContext()
-    }
-    
-    func saveEdition(_ taskName: String, tableView: UITableView, index: Int) {
-        taskList[index].title = taskName
-        let cellIndex = IndexPath(row: index, section: 0)
-        tableView.reloadRows(at: [cellIndex], with: .automatic)
-        
-        saveContext()
     }
 }
