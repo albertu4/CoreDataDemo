@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7451248A28F86D6300F9FCD5 /* Extension + UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7451248928F86D6300F9FCD5 /* Extension + UIAlertController.swift */; };
 		74BC914A28158F55002C65A8 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BC914928158F55002C65A8 /* StorageManager.swift */; };
 		A8969B1B270B6C6D00F7DED0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8969B1A270B6C6D00F7DED0 /* AppDelegate.swift */; };
 		A8969B1F270B6C6D00F7DED0 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8969B1E270B6C6D00F7DED0 /* TaskListViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7451248928F86D6300F9FCD5 /* Extension + UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIAlertController.swift"; sourceTree = "<group>"; };
 		74BC914928158F55002C65A8 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A8969B17270B6C6D00F7DED0 /* CoreDataDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8969B1A270B6C6D00F7DED0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7451248828F86D3A00F9FCD5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7451248928F86D6300F9FCD5 /* Extension + UIAlertController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		74BC914428158E83002C65A8 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +108,9 @@
 		A8969B19270B6C6D00F7DED0 /* CoreDataDemo */ = {
 			isa = PBXGroup;
 			children = (
-				74BC914828158F35002C65A8 /* Services */,
 				74BC914528158EE0002C65A8 /* ViewControllers */,
+				74BC914828158F35002C65A8 /* Services */,
+				7451248828F86D3A00F9FCD5 /* Extensions */,
 				74BC914728158F0E002C65A8 /* Storyboards */,
 				74BC914628158EF2002C65A8 /* Resources */,
 				74BC914428158E83002C65A8 /* App */,
@@ -178,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8969B1F270B6C6D00F7DED0 /* TaskListViewController.swift in Sources */,
+				7451248A28F86D6300F9FCD5 /* Extension + UIAlertController.swift in Sources */,
 				A8969B25270B6C6D00F7DED0 /* CoreDataDemo.xcdatamodeld in Sources */,
 				A8969B1B270B6C6D00F7DED0 /* AppDelegate.swift in Sources */,
 				74BC914A28158F55002C65A8 /* StorageManager.swift in Sources */,

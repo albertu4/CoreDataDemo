@@ -27,7 +27,7 @@ class StorageManager {
     private init() {
         viewContext = persistentContainer.viewContext
     }
-
+    
     // MARK: - Public methods
     func fetchData(completion: @escaping(Result<[Task], Error>) -> Void) {
         let fetchRequest = Task.fetchRequest()
@@ -57,7 +57,6 @@ class StorageManager {
         
         task.title = taskname
         completion(task)
-        
         saveContext()
     }
     
